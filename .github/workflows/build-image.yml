@@ -48,7 +48,7 @@ jobs:
         context: .
         platforms: linux/amd64,linux/arm64
         provenance: false
-        file: ${{ env.SRC }}/Dockerfile
+        file: Dockerfile
         tags: ${{ env.IMG_NAME }}:${{ env.TAG }}
         load: true
         cache-from: type=gha
@@ -63,12 +63,3 @@ jobs:
         file: Dockerfile
         push: true
         tags: ${{ env.IMG_NAME }}:${{ env.TAG }}
-
-    # - name: Deploying new image
-    #   uses: appleboy/ssh-action@v1.0.0
-    #   with:
-    #     host: ${{ secrets.HOST }}
-    #     username: ${{ secrets.USERNAME }}
-    #     password: ${{ secrets.PASSWORD }}
-    #     port: ${{ secrets.PORT }}
-    #     script: bash ~/deploy.sh
