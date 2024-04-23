@@ -1,0 +1,10 @@
+# Docker compose to create dev testing environment
+#
+services:
+  nginx:
+    restart: always
+    image: nginx:latest
+    ports:
+      - "80:80"
+    volumes:
+      - ./app/:/usr/share/nginx/html
