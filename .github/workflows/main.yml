@@ -1,0 +1,33 @@
+name: Master
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+
+jobs:
+  detect-file-changes:
+    runs-on: ubuntu-latest
+    outputs:
+      app: ${{ steps.changes.outputs.app }}
+    
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dorny/paths-filter@v2
+        id: changes
+        with:
+          filters: |
+            app:
+              - "app/**"
+
+  build-image:
+    if: |
+      always() &&
+      needs.detect-file-changes.outputs.app == 'true' &&
+      !contains(needs.*.result, 'failure') &&
+      !contains(needs.*.result, 'cancelled')
+    needs: detect-file-changes
+    uses: ./.github/workflows/build-image.yml
+    with:
+      image_tag: latest
