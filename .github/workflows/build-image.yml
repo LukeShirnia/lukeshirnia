@@ -15,7 +15,6 @@ on:
         type: string
 
 env:
-  SRC: misc/dev
   IMG: ghcr.io/${{ github.repository_owner }}/shirnia.com
   TAG: latest
 
@@ -61,7 +60,7 @@ jobs:
         context: .
         provenance: false
         cache-to: type=gha
-        file: ${{ env.SRC }}/Dockerfile
+        file: Dockerfile
         push: true
         tags: ${{ env.IMG_NAME }}:${{ env.TAG }}
 
