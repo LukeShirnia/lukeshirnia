@@ -31,4 +31,5 @@ jobs:
     uses: ./.github/workflows/build-image.yml
     with:
       image_tag: latest
+    # Important for using secrets in forks (such as image building)
     secrets: inherit
