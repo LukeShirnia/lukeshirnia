@@ -31,3 +31,4 @@ jobs:
     uses: ./.github/workflows/build-image.yml
     with:
       image_tag: latest
+    secrets: inherit
