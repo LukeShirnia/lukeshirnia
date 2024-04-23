@@ -50,7 +50,7 @@ jobs:
         provenance: false
         file: Dockerfile
         tags: ${{ env.IMG_NAME }}:${{ env.TAG }}
-        load: true
+        # load: true
         cache-from: type=gha
         push: false
 
