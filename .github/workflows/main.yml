@@ -19,7 +19,7 @@ jobs:
         with:
           filters: |
             app:
-              - "app/**"
+              - "**"
 
   build-image:
     if: |
